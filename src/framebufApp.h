@@ -1,3 +1,6 @@
+#pragma once
+
+#include "framebuf.h"
 #include "mcore.h"
 
 #include "SDL.h"
@@ -24,9 +27,7 @@ private:
     SDL_Renderer* mRenderer = nullptr;
     SDL_Texture* mBackBuf = nullptr;
 
-    int mWidth = 1024;
-    int mHeight = 600;
-    std::vector<u32> mPixels;
+    Framebuf mFramebuf;
 
     bool mWantsQuit = false;
 };

@@ -2,7 +2,7 @@ project(mos CXX C)
 
 set(main_SRCS
   main.cpp
-  framebufApp.cpp
+  framebufApp.cpp framebuf.cpp
 )
 
 add_executable(${EXE_NAME} ${GUI_TYPE} ${main_SRCS})

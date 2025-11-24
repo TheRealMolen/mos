@@ -5,8 +5,7 @@
 //----------------------------------------------------------------------------------------------
 
 FramebufApp::FramebufApp(const char* windowTitle, int width, int height)
-    : mWidth(width)
-    , mHeight(height)
+    : mFramebuf(width, height)
 {
     int res = SDL_Init (SDL_INIT_VIDEO);
     if (res)
@@ -14,7 +13,7 @@ FramebufApp::FramebufApp(const char* windowTitle, int width, int height)
 
     mWindow = SDL_CreateWindow (windowTitle,
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-        mWidth, mHeight,
+        width, height,
         SDL_WINDOW_ALLOW_HIGHDPI);
     if (!mWindow)
         throw std::format("SDL_CreateWindow failed: {}" , SDL_GetError());
@@ -26,11 +25,9 @@ FramebufApp::FramebufApp(const char* windowTitle, int width, int height)
     mBackBuf = SDL_CreateTexture (
         mRenderer,
         SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STATIC,
-        mWidth, mHeight);
+        width, height);
     if (!mBackBuf)
         throw std::format("SDL_CreateTexture failed to create backbuf: {}", SDL_GetError());
-
-    mPixels.assign (mWidth * mHeight, 0xffeeddaa);
 
     SDL_ShowWindow (mWindow);
 }
@@ -48,6 +45,9 @@ FramebufApp::~FramebufApp()
 
 void FramebufApp::mainLoop()
 {
+    mFramebuf.rectStroke(100, 100, 400, 400, 0xffee9966);
+    mFramebuf.rectStroke(16, 16, mFramebuf.width() - 16, mFramebuf.height() - 16, 0xffeeddaa);
+
     while (!mWantsQuit)
     {
         readInput();
@@ -95,7 +95,7 @@ void FramebufApp::tick(float deltaTime)
 
 void FramebufApp::present()
 {
-    SDL_UpdateTexture (mBackBuf, nullptr, mPixels.data(), mWidth * sizeof(decltype(*mPixels.data())));
+    SDL_UpdateTexture (mBackBuf, nullptr, mFramebuf.data(), mFramebuf.stride());
     SDL_RenderCopy (mRenderer, mBackBuf, nullptr, nullptr);
     SDL_RenderPresent (mRenderer);
 }
