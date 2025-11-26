@@ -10,9 +10,7 @@ if(APPLE)
   set(GUI_TYPE MACOSX_BUNDLE)
 endif(APPLE)
 
-set(TARGET_DIR
-  ${CMAKE_BINARY_DIR}/target
-)
+set(TARGET_DIR ${CMAKE_SOURCE_DIR}/bin)
 
 set(EXE_NAME ${PROJECT_NAME})
 

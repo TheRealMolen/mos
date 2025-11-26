@@ -17,8 +17,14 @@ target_link_libraries(${EXE_NAME}
     ${SDL2_LIBRARY}
 )
 
-set_property(TARGET ${EXE_NAME} PROPERTY CXX_STANDARD 20)
-set_property(TARGET ${EXE_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
+set_target_properties(${EXE_NAME} PROPERTIES
+    DEBUG_OUTPUT_NAME ${EXE_NAME}d
+    RELWITHDEBINFO_OUTPUT_NAME ${EXE_NAME}rd)
+
+target_compile_features(${EXE_NAME} PUBLIC cxx_std_20)
+
+#set_property(TARGET ${EXE_NAME} PROPERTY CXX_STANDARD 20)
+#set_property(TARGET ${EXE_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 
 
 # YouCompleteMe completion setup - based on https://github.com/danebulat/vim-cmake-boilerplate
@@ -27,7 +33,7 @@ set_property(TARGET ${EXE_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU>")
 set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
 
-set(gcc_flags "-g;-Wall;-Wextra;-Wshadow;-Wshadow;-Wformat=2")
+set(gcc_flags "-Wall;-Wextra;-Wshadow;-Wshadow;-Wformat=2;-Werror")
 set(msvc_flags "-W3")
 
 target_compile_options(${EXE_NAME} PRIVATE
