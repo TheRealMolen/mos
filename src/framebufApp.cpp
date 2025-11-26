@@ -45,9 +45,6 @@ FramebufApp::~FramebufApp()
 
 void FramebufApp::mainLoop()
 {
-    mFramebuf.rectStroke(100, 100, 400, 400, 0xffee9966);
-    mFramebuf.rectStroke(16, 16, mFramebuf.width() - 16, mFramebuf.height() - 16, 0xffeeddaa);
-
     while (!mWantsQuit)
     {
         readInput();
@@ -86,9 +83,28 @@ void FramebufApp::readInput()
 
 //----------------------------------------------------------------------------------------------
 
+double gTime = 0.f;
+
 void FramebufApp::tick(float deltaTime)
 {
-    (void) deltaTime;
+    gTime += deltaTime;
+    
+    mFramebuf.clear();
+
+    mFramebuf.rectStroke (100, 100, 400, 400, 0xffee9966);
+    mFramebuf.rectStroke (16, 16, mFramebuf.width() - 16, mFramebuf.height() - 16, 0xffeeddaa);
+
+    {
+        float x = 300.f * cosf(gTime);
+        float y = 300.f * sinf(gTime);
+        mFramebuf.rectStroke (int(200.f + x), int(200.f + y), int(600.f + x), int(800.f + y), 0xffff66cc);
+    }
+
+    {
+        float x = 500.f * cosf(-1.5 * gTime);
+        float y = 500.f * sinf(-1.5 * gTime);
+        mFramebuf.rect (int(400.f + x), int(200.f + y), int(600.f + x), int(800.f + y), 0xff3366cc);
+    }
 }
 
 //----------------------------------------------------------------------------------------------

@@ -130,53 +130,77 @@ mos/fast:
 	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/build
 .PHONY : mos/fast
 
-framebufApp.o: framebufApp.cc.o
+framebuf.o: framebuf.cpp.o
+.PHONY : framebuf.o
+
+# target to build an object file
+framebuf.cpp.o:
+	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/framebuf.cpp.o
+.PHONY : framebuf.cpp.o
+
+framebuf.i: framebuf.cpp.i
+.PHONY : framebuf.i
+
+# target to preprocess a source file
+framebuf.cpp.i:
+	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/framebuf.cpp.i
+.PHONY : framebuf.cpp.i
+
+framebuf.s: framebuf.cpp.s
+.PHONY : framebuf.s
+
+# target to generate assembly for a file
+framebuf.cpp.s:
+	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/framebuf.cpp.s
+.PHONY : framebuf.cpp.s
+
+framebufApp.o: framebufApp.cpp.o
 .PHONY : framebufApp.o
 
 # target to build an object file
-framebufApp.cc.o:
-	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/framebufApp.cc.o
-.PHONY : framebufApp.cc.o
+framebufApp.cpp.o:
+	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/framebufApp.cpp.o
+.PHONY : framebufApp.cpp.o
 
-framebufApp.i: framebufApp.cc.i
+framebufApp.i: framebufApp.cpp.i
 .PHONY : framebufApp.i
 
 # target to preprocess a source file
-framebufApp.cc.i:
-	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/framebufApp.cc.i
-.PHONY : framebufApp.cc.i
+framebufApp.cpp.i:
+	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/framebufApp.cpp.i
+.PHONY : framebufApp.cpp.i
 
-framebufApp.s: framebufApp.cc.s
+framebufApp.s: framebufApp.cpp.s
 .PHONY : framebufApp.s
 
 # target to generate assembly for a file
-framebufApp.cc.s:
-	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/framebufApp.cc.s
-.PHONY : framebufApp.cc.s
+framebufApp.cpp.s:
+	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/framebufApp.cpp.s
+.PHONY : framebufApp.cpp.s
 
-main.o: main.cc.o
+main.o: main.cpp.o
 .PHONY : main.o
 
 # target to build an object file
-main.cc.o:
-	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/main.cc.o
-.PHONY : main.cc.o
+main.cpp.o:
+	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-main.i: main.cc.i
+main.i: main.cpp.i
 .PHONY : main.i
 
 # target to preprocess a source file
-main.cc.i:
-	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/main.cc.i
-.PHONY : main.cc.i
+main.cpp.i:
+	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-main.s: main.cc.s
+main.s: main.cpp.s
 .PHONY : main.s
 
 # target to generate assembly for a file
-main.cc.s:
-	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/main.cc.s
-.PHONY : main.cc.s
+main.cpp.s:
+	cd /home/molen/src/mos && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/mos.dir/build.make src/CMakeFiles/mos.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -187,6 +211,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... mos"
+	@echo "... framebuf.o"
+	@echo "... framebuf.i"
+	@echo "... framebuf.s"
 	@echo "... framebufApp.o"
 	@echo "... framebufApp.i"
 	@echo "... framebufApp.s"

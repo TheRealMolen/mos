@@ -27,7 +27,7 @@ set_property(TARGET ${EXE_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU>")
 set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
 
-set(gcc_flags "-Wall;-Wextra;-Wshadow;-Wshadow;-Wformat=2")
+set(gcc_flags "-g;-Wall;-Wextra;-Wshadow;-Wshadow;-Wformat=2")
 set(msvc_flags "-W3")
 
 target_compile_options(${EXE_NAME} PRIVATE
